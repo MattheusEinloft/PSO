@@ -1,0 +1,325 @@
+{% extends "app/base_site.html" %}
+
+{% block title %} Chart JS {% endblock title %}
+
+{% block stylesheets %}
+  {{ block.super }}
+{% endblock stylesheets %}
+
+{% block content %}
+  <div class="right_col" role="main">
+    <div class="">
+      <div class="page-title">
+        <div class="title_left">
+          <h3>T6 de PSO <small>Estatisticas de log IpTables</small></h3>
+        </div>
+
+        <div class="title_right">
+          <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search for...">
+              <span class="input-group-btn">
+                <button class="btn btn-default" type="button">Go!</button>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel">
+            <div class="x_title">
+              <h2>Numero total de pacotes <small></small></h2>
+              <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Settings 1</a>
+                    </li>
+                    <li><a href="#">Settings 2</a>
+                    </li>
+                  </ul>
+                </li>
+                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+
+              <div class="bs-example" data-example-id="simple-jumbotron">
+                <div class="jumbotron">
+                  <h1>{{n_pacotes}}</h1>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="clearfix"></div>
+
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel tile fixed_height_450 overflow_hidden">
+            <div class="x_title">
+              <h2>Top 10 IPs Fonte</h2>
+              <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Settings 1</a>
+                    </li>
+                    <li><a href="#">Settings 2</a>
+                    </li>
+                  </ul>
+                </li>
+                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <table class="" style="width:100%">
+                <tr>
+                  <th style="width:50%;">
+                    <p>Top 10</p>
+                  </th>
+                  <th>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                      <p class="">Endereco Ip</p>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                      <p class="">Numero de Pacotes</p>
+                    </div>
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <div>
+                      <canvas id="doughnut-chartcanvas-1"></canvas>
+                    </div>
+                  </td>
+                  <td>
+                    <table class="tile_info">
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square blue"></i>{{ip1}} </p>
+                        </td>
+                        <td>{{ip1.numero_pacotes}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square green"></i>{{ip2}} </p>
+                        </td>
+                        <td>{{ip2.numero_pacotes}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square purple"></i>{{ip3}} </p>
+                        </td>
+                        <td>{{ip3.numero_pacotes}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square aero"></i>{{ip4}} </p>
+                        </td>
+                        <td>{{ip4.numero_pacotes}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square red"></i>{{ip5}} </p>
+                        </td>
+                        <td>{{ip5.numero_pacotes}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square dark"></i>{{ip6}} </p>
+                        </td>
+                        <td>{{ip6.numero_pacotes}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square amarelo"></i>{{ip7}} </p>
+                        </td>
+                        <td>{{ip7.numero_pacotes}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square rosa"></i>{{ip8}} </p>
+                        </td>
+                        <td>{{ip8.numero_pacotes}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square laranja"></i>{{ip9}} </p>
+                        </td>
+                        <td>{{ip9.numero_pacotes}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square marrom"></i>{{ip10}} </p>
+                        </td>
+                        <td>{{ip10.numero_pacotes}} </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+          <div class="x_panel tile fixed_height_450 overflow_hidden">
+            <div class="x_title">
+              <h2>Top 10 Portas</h2>
+              <ul class="nav navbar-right panel_toolbox">
+                <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                </li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#">Settings 1</a>
+                    </li>
+                    <li><a href="#">Settings 2</a>
+                    </li>
+                  </ul>
+                </li>
+                <li><a class="close-link"><i class="fa fa-close"></i></a>
+                </li>
+              </ul>
+              <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+              <table class="" style="width:100%">
+                <tr>
+                  <th style="width:50%;">
+                    <p>Top 10</p>
+                  </th>
+                  <th>
+                    <div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+                      <p class="">Nome da Porta</p>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-5 col-xs-5">
+                      <p class="">Quantidade</p>
+                    </div>
+                  </th>
+                </tr>
+                <tr>
+                  <td>
+                    <div>
+                      <canvas id="doughnut-chartcanvas-2"></canvas>
+                    </div>
+                  </td>
+                  <td>
+                    <table class="tile_info">
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square blue"></i>{{port1}} </p>
+                        </td>
+                        <td>{{port1.quantidade}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square green"></i>{{port2}} </p>
+                        </td>
+                        <td>{{port2.quantidade}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square purple"></i>{{port3}} </p>
+                        </td>
+                        <td>{{port3.quantidade}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square aero"></i>{{port4}} </p>
+                        </td>
+                        <td>{{port4.quantidade}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square red"></i>{{port5}} </p>
+                        </td>
+                        <td>{{port5.quantidade}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square dark"></i>{{port6}} </p>
+                        </td>
+                        <td>{{port6.quantidade}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square amarelo"></i>{{port7}} </p>
+                        </td>
+                        <td>{{port7.quantidade}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square rosa"></i>{{port8}} </p>
+                        </td>
+                        <td>{{port8.quantidade}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square laranja"></i>{{port9}} </p>
+                        </td>
+                        <td>{{port9.quantidade}} </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <p><i class="fa fa-square marrom"></i>{{port10}} </p>
+                        </td>
+                        <td>{{port10.quantidade}} </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    </div>
+    <input type="hidden" id="ip1Var" name="{{ ip1 }}" value="{{ ip1.numero_pacotes }}">
+    <input type="hidden" id="ip2Var" name="{{ ip2 }}" value="{{ ip2.numero_pacotes }}">
+    <input type="hidden" id="ip3Var" name="{{ ip3 }}" value="{{ ip3.numero_pacotes }}">
+    <input type="hidden" id="ip4Var" name="{{ ip4 }}" value="{{ ip4.numero_pacotes }}">
+    <input type="hidden" id="ip5Var" name="{{ ip5 }}" value="{{ ip5.numero_pacotes }}">
+    <input type="hidden" id="ip6Var" name="{{ ip6 }}" value="{{ ip6.numero_pacotes }}">
+    <input type="hidden" id="ip7Var" name="{{ ip7 }}" value="{{ ip7.numero_pacotes }}">
+    <input type="hidden" id="ip8Var" name="{{ ip8 }}" value="{{ ip8.numero_pacotes }}">
+    <input type="hidden" id="ip9Var" name="{{ ip9 }}" value="{{ ip9.numero_pacotes }}">
+    <input type="hidden" id="ip10Var" name="{{ ip10 }}" value="{{ ip10.numero_pacotes }}">
+
+    <input type="hidden" id="port1Var" name="{{ port1 }}" value="{{ port1.quantidade }}">
+    <input type="hidden" id="port2Var" name="{{ port2 }}" value="{{ port2.quantidade }}">
+    <input type="hidden" id="port3Var" name="{{ port3 }}" value="{{ port3.quantidade }}">
+    <input type="hidden" id="port4Var" name="{{ port4 }}" value="{{ port4.quantidade }}">
+    <input type="hidden" id="port5Var" name="{{ port5 }}" value="{{ port5.quantidade }}">
+    <input type="hidden" id="port6Var" name="{{ port6 }}" value="{{ port6.quantidade }}">
+    <input type="hidden" id="port7Var" name="{{ port7 }}" value="{{ port7.quantidade }}">
+    <input type="hidden" id="port8Var" name="{{ port8 }}" value="{{ port8.quantidade }}">
+    <input type="hidden" id="port9Var" name="{{ port9 }}" value="{{ port9.quantidade }}">
+    <input type="hidden" id="port10Var" name="{{ port10 }}" value="{{ port10.quantidade }}">
+{% endblock content %}
+
+{% block javascripts %}
+  {{ block.super }}
+    <!-- Chart.js -->
+    <script src="/static/vendors/Chart.js/dist/Chart.min.js"></script>
+    <script src="/static/build/js/grafico_doughnut.js"></script>
+{% endblock javascripts %}
